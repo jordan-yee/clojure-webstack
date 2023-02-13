@@ -7,7 +7,7 @@
   (:require [clojure.tools.build.api :as b]))
 
 (def lib 'webstack) ; could be used for `b/write-pom`
-(def version (format "1.2.%s" (b/git-count-revs nil))) ; TODO: process for updating?
+(def version (format "0.0.%s" (b/git-count-revs nil))) ; TODO: process for updating?
 (def class-dir "target/classes")
 (def basis (b/create-basis {:project "deps.edn"}))
 (def uber-file (format "target/%s-%s-standalone.jar" (name lib) version))
