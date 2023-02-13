@@ -27,3 +27,11 @@ Clean and build uberjar:
 ```
 clj -T:build uber
 ```
+
+# Running the Application
+
+After building you can run it with:
+```
+# Remember to update the version in this command as needed!
+java -jar target/webstack-1.2.1-standalone.jar
+```
