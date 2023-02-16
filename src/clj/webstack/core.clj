@@ -3,22 +3,15 @@
   top-level setup for the build, with specialized application functionality
   being required from elsewhere."
   (:require
+   [mount.core :as mount]
    [webstack.server :as server])
   (:gen-class))
 
 (defn start []
-  {:web-server (server/start-server)})
-
-(def app (atom nil))
-
-(defn stop [app-instance]
-  (server/stop-server (:web-server app-instance))
-  :webstack-stopped)
-(comment
-  (stop app))
+  (mount/start #'server/web-server))
 
 #_{:clj-kondo/ignore [:unused-binding]}
 (defn -main [& args]
   (println "Starting webstack....")
-  (reset! app (start))
-  :webstack-started)
+  (start)
+  :ready)
