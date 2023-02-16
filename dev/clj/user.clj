@@ -1,14 +1,9 @@
 (ns user
+  #_{:clj-kondo/ignore [:refer-all]}
   (:require
-   [webstack.core :as core]
-   [clojure.tools.namespace.repl :refer [refresh]]
+   [dev :refer :all]
    [portal.api :as portal]))
 
 (defn start-portal []
   (portal/open)
   (portal/tap))
-
-;; TODO: Get things set up for a refresh workflow:
-;; https://github.com/clojure/tools.namespace#reloading-code-preparing-your-application
-(defn restart []
-  (refresh))
