@@ -1,9 +1,11 @@
-{:paths ["src/clj" "classes"]
+{:paths ["src/clj" "src/cljc" "resources"]
 
  :deps
  {}
 
  :aliases
- {:test {:extra-paths ["test"]}
+ {:dev {:extra-paths ["dev/clj"]
+        :deps {org.clojure/tools.namespace {:mvn/version "1.4.0"}}}
+  :test {:extra-paths ["test/clj"]}
   :build {:deps {io.github.clojure/tools.build {:mvn/version "0.9.3"}}
           :ns-default build}}}

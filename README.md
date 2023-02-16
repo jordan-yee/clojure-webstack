@@ -6,11 +6,19 @@ practices.
 
 # First Time Setup
 
-TODO
+Install the [Practicalli Configuration for Clojure CLI](https://practical.li/clojure/clojure-cli/practicalli-config/) for a curated set of Clojure CLI-based tooling:
+```
+# Backup your existing user config if needed, then...
+rm -rf $HOME/.clojure
+git clone https://github.com/practicalli/clojure-deps-edn.git $HOME/.clojure
+```
 
 # Development
 
-TODO
+To start a REPL for development run:
+```
+clojure -M:dev:repl/reloaded
+```
 
 # Testing
 
