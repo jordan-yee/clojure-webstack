@@ -7,7 +7,7 @@
   (println "webstack: starting server..."))
 
 (defn stop-server [_server]
-  (println "webstack: stop server..."))
+  (println "webstack: stopping server..."))
 
 (defstate web-server
   :start (start-server)
