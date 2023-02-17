@@ -6,12 +6,16 @@ practices.
 
 # First Time Setup
 
-Install the [Practicalli Configuration for Clojure CLI](https://practical.li/clojure/clojure-cli/practicalli-config/) for a curated set of Clojure CLI-based tooling:
+Install the [Practicalli Configuration for Clojure CLI](https://practical.li/clojure/clojure-cli/practicalli-config/)
+for a curated set of Clojure CLI-based tooling:
 ```
 # Backup your existing user config if needed, then...
 rm -rf $HOME/.clojure
 git clone https://github.com/practicalli/clojure-deps-edn.git $HOME/.clojure
 ```
+
+Actually, the essential aliases from the Practicalli config have been copied
+into this project's deps.edn, but others may still be useful.
 
 # Development
 
@@ -25,6 +29,10 @@ clojure -M:repl/reloaded
 TODO
 
 # Building
+
+The version is set in `build.clj` as `<major>.<minor>.<git-revs>`, where the
+`<major>` and `<minor>` segments must be set manually, but the `<git-revs>`
+segment is automatically computed. You will likely want to extend this.
 
 Clean only:
 ```
@@ -41,5 +49,5 @@ clj -T:build uber
 After building you can run it with:
 ```
 # Remember to update the version in this command as needed!
-java -jar target/webstack-1.2.1-standalone.jar
+java -jar target/webstack-0.0.10-standalone.jar
 ```
