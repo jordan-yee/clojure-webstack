@@ -6,7 +6,10 @@
    [webstack.handlers.page-home :as page-home]
    [webstack.middleware.request-observer :as request-observer]))
 
-(def app (request-observer/wrap-request-observer page-home/handler))
+;; NOTE: Middleware runs from bottom to top, and if any middleware creates a
+;; response, that will short-circuit and the middleware above will not be called.
+(def app (-> page-home/handler
+             request-observer/wrap-request-observer))
 
 (defn start-server
   "Start the Jetty web server.
