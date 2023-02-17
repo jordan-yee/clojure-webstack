@@ -1,7 +1,8 @@
 {:paths ["src/clj" "src/cljc" "resources"]
 
  :deps
- {mount/mount {:mvn/version "0.1.17"}}
+ {mount/mount {:mvn/version "0.1.17"}
+  ring/ring {:mvn/version "1.9.6"}}
 
  :aliases
  {;; Copied from https://practical.li/clojure/clojure-cli/repl-reloaded/
