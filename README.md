@@ -17,7 +17,7 @@ git clone https://github.com/practicalli/clojure-deps-edn.git $HOME/.clojure
 
 To start a REPL for development run:
 ```
-clojure -M:dev:repl/reloaded
+clojure -M:repl/reloaded
 ```
 
 # Testing

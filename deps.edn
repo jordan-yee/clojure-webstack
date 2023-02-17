@@ -4,8 +4,25 @@
  {mount/mount {:mvn/version "0.1.17"}}
 
  :aliases
- {:dev {:extra-paths ["dev/clj"]
-        :deps {org.clojure/tools.namespace {:mvn/version "1.4.0"}}}
-  :test {:extra-paths ["test/clj"]}
+ {;; Copied from https://practical.li/clojure/clojure-cli/repl-reloaded/
+  :repl/reloaded
+  {:extra-paths ["dev/clj" "dev/cljc" "test/clj" "test/cljc"]
+   :extra-deps {nrepl/nrepl                {:mvn/version "1.0.0"}
+                cider/cider-nrepl          {:mvn/version "0.28.7"}
+                com.bhauman/rebel-readline {:mvn/version "0.1.4"}
+                djblue/portal {:mvn/version "0.34.2"}
+                org.clojure/tools.namespace {:mvn/version "1.3.0"}
+                org.clojure/tools.deps.alpha {:git/url "https://github.com/clojure/tools.deps.alpha"
+                                              :git/sha "e4fb92eef724fa39e29b39cc2b1a850567d490dd"}
+                org.slf4j/slf4j-nop {:mvn/version "2.0.5"}
+                com.brunobonacci/mulog {:mvn/version "0.9.0"}
+                lambdaisland/kaocha {:mvn/version "1.71.1119"}
+                org.clojure/test.check {:mvn/version "1.1.1"}
+                ring/ring-mock         {:mvn/version "0.4.0"}
+                criterium/criterium    {:mvn/version "0.4.6"}}
+   :main-opts  ["-m" "nrepl.cmdline"
+                "--middleware" "[cider.nrepl/cider-middleware]"
+                "--interactive"
+                "-f" "rebel-readline.main/-main"]}
   :build {:deps {io.github.clojure/tools.build {:mvn/version "0.9.3"}}
           :ns-default build}}}
