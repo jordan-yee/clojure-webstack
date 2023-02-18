@@ -10,3 +10,6 @@
     (-> body
         (response/response)
         (response/content-type "text/html"))))
+
+(def route {:name ::home
+            :get handler})
