@@ -2,12 +2,13 @@
   (:require
    [clojure.test :refer :all]
    [ring.mock.request :as mock]
+   [ring.util.http-predicates :as predicates]
    [webstack.handlers.page-home :as page-home]))
 
 (deftest handler-test
   (let [request (mock/request :get  "/")
         response (page-home/handler request)]
-    (is (= 200 (:status response))
+    (is (predicates/ok? response)
         "the home page request returns a success response")
     (is (and (= "text/html" (get-in response [:headers "Content-Type"]))
              (string? (:body response)))

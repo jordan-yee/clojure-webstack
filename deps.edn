@@ -6,7 +6,7 @@
   ring/ring      {:mvn/version "1.9.6"}}
 
  :aliases
- {;; Copied from https://practical.li/clojure/clojure-cli/repl-reloaded/
+ {;; Originally copied from https://practical.li/clojure/clojure-cli/repl-reloaded/
   :repl/reloaded
   {:extra-paths ["dev/clj" "dev/cljc" "test/clj" "test/cljc"]
    :extra-deps {cider/cider-nrepl            {:mvn/version "0.28.7"}
@@ -15,6 +15,7 @@
                 criterium/criterium          {:mvn/version "0.4.6"}
                 djblue/portal                {:mvn/version "0.34.2"}
                 lambdaisland/kaocha          {:mvn/version "1.77.1236"}
+                metosin/ring-http-response   {:mvn/version "0.9.3"}
                 mvxcvi/puget                 {:mvn/version "1.3.4"}
                 nrepl/nrepl                  {:mvn/version "1.0.0"}
                 org.clojure/test.check       {:mvn/version "1.1.1"}
