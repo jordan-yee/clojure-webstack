@@ -25,16 +25,26 @@ git clone https://github.com/practicalli/clojure-deps-edn.git $HOME/.clojure
 Actually, the essential aliases from the Practicalli config have been copied
 into this project's deps.edn, but others may still be useful.
 
+# Testing
+
+Start a REPL w/ a test runner that automatically re-runs tests after each change:
+```
+clojure -M:repl/reloaded
+user=> (test-watch)
+```
+
 # Development
 
 To start a REPL for development run:
 ```
 clojure -M:repl/reloaded
+user=> (go)
 ```
 
-# Testing
-
-TODO
+After making a change, run:
+```
+user=> (reset)
+```
 
 # Building
 
