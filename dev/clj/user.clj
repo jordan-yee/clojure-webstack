@@ -4,8 +4,15 @@
   (:require
    [clojure.repl :refer :all]
    [dev :refer [go reset]]
-   [puget.printer :as puget]
-   [portal.api :as portal]))
+   [kaocha.repl :as k]
+   [kaocha.watch :as k-watch]
+   [portal.api :as portal]
+   [puget.printer :as puget]))
+
+(defn test-watch
+  "Start the Kaocha test watcher."
+  []
+  (k-watch/run (k/config)))
 
 (defn start-portal []
   (portal/open)
