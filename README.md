@@ -1,8 +1,16 @@
 # Overview
 
-This is an minimal example implementation of a full stack web server using a
+This is minimal-ish example implementation of a full stack web server using a
 select set of the latest (as of 2023) leading Clojure/Script libraries &
 practices.
+
+To use this project as a template, first clone it, then you can rename the
+project namespace prefix using `clojure.tools.namespace.move/move-ns` from
+a REPL:
+```
+;; TODO: adapt this example call into a script to rename all `webstack` segments
+(mv/move-ns 'webstack.core 'my-app.core "src/clj/" ["test" "src"])
+```
 
 # First Time Setup
 
