@@ -3,13 +3,7 @@
   (:require
    [mount.core :refer [defstate]]
    [ring.adapter.jetty :as jetty]
-   [webstack.handlers.page-home :as page-home]
-   [webstack.middleware.request-observer :as request-observer]))
-
-;; NOTE: Middleware runs from bottom to top, and if any middleware creates a
-;; response, that will short-circuit and the middleware above will not be called.
-(def app (-> page-home/handler
-             request-observer/wrap-request-observer))
+   [webstack.router :as router]))
 
 (defn start-server
   "Start the Jetty web server.
@@ -19,9 +13,15 @@
   []
   (println "webstack: starting web server...")
   ;; TODO: print server URL on start
-  (jetty/run-jetty app {:port 3000
-                        ;; Prevent the server from blocking the thread for RDD
-                        :join? false}))
+  ;; To pass app as a var or not:
+  ;; https://groups.google.com/g/clojure/c/tZpNp0rEBKQ/m/D3XPv94EZw4J?pli=1
+  ;; It has to do with reloadability--a var will be deref'd on each request.
+  ;; Since we we're using tools.namespace/refresh we'll proceed without the var
+  ;; wrapper to avoid the probably negligible performance hit.
+  (jetty/run-jetty router/app
+                   {:port 3000
+                    ;; Prevent the server from blocking the thread for RDD
+                    :join? false}))
 
 (defn stop-server [web-server]
   (println "webstack: stopping web server...")
