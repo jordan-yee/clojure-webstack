@@ -1,9 +1,12 @@
 (ns webstack.handlers.page-home
-  "The handler that returns the home page.")
+  "The handler that returns the home page."
+  (:require
+   [ring.util.response :as response]))
 
 (def last-request (atom nil))
 (defn handler [request]
   (reset! last-request request)
-  {:status 200
-   :headers {"Content-Type" "text/html"}
-   :body "This is the home page!"})
+  (let [body "This is the home page!"]
+    (-> body
+        (response/response)
+        (response/content-type "text/html"))))
