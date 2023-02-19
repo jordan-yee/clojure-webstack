@@ -1,12 +1,11 @@
 (ns webstack.handlers.api-data-test
   (:require
-   [cheshire.core :as json]
    [clojure.test :refer :all]
    [ring.mock.request :as mock]
    [ring.util.http-predicates :as predicates]
+   [webstack.handlers.api-data :as api-data]
    [webstack.router :as router]
-   [webstack.test-utils.response :as response]
-   [webstack.handlers.api-data :as api-data]))
+   [webstack.test-utils.response :as response]))
 
 (deftest handler-test
   (let [request (mock/request :get "/api/v1/data")
@@ -15,15 +14,6 @@
     (is (map? (:body response))
         "returns a map of data")))
 
-(defn- is-valid-json? [data]
-  (try
-    (json/parse-string data)
-    true
-    (catch Exception e
-      (println "JSON parse error:")
-      (println (.getMessage e))
-      false)))
-
 (deftest route-test
   (let [request (mock/request :get "/api/v1/data")
         response (router/app request)]
@@ -31,5 +21,5 @@
         "returns a success response")
     (is (response/content-type-json? response)
         "returns content-type json")
-    (is (is-valid-json? (:body response))
+    (is (response/is-body-json? response)
         "returns data as a valid json string")))
