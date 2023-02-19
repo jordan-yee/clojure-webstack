@@ -1,11 +1,13 @@
 {:paths ["src/clj" "src/cljc" "resources"]
 
  :deps
- {hiccup/hiccup                {:mvn/version "1.0.5"}
+ {cheshire/cheshire            {:mvn/version "5.11.0"}
+  hiccup/hiccup                {:mvn/version "1.0.5"}
   metosin/reitit               {:mvn/version "0.5.18"}
   metosin/ring-http-response   {:mvn/version "0.9.3"}
   mount/mount                  {:mvn/version "0.1.17"}
-  ring/ring                    {:mvn/version "1.9.6"}}
+  ring/ring                    {:mvn/version "1.9.6"}
+  ring/ring-json               {:mvn/version "0.5.1"}}
 
  :aliases
  {;; Originally copied from https://practical.li/clojure/clojure-cli/repl-reloaded/

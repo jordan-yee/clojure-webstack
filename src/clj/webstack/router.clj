@@ -2,12 +2,15 @@
   "Route definitions for the web server."
   (:require
    [reitit.ring :as ring]
-   [webstack.middleware.request-observer :as request-observer]
+   [webstack.handlers.api-data :as api-data]
    [webstack.handlers.default :as default]
-   [webstack.handlers.page-home :as page-home]))
+   [webstack.handlers.page-home :as page-home]
+   [webstack.middleware.request-observer :as request-observer]))
 
 (def page-routes
-  [["/" page-home/route]])
+  [["/" page-home/route]
+   ["/api/v1" {:middleware [[]]}
+    ["/data" api-data/route]]])
 
 (def app (ring/ring-handler
           (ring/router page-routes)
