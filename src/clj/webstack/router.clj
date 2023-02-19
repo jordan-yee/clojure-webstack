@@ -2,6 +2,7 @@
   "Route definitions for the web server."
   (:require
    [reitit.ring :as ring]
+   [ring.middleware.json :as middleware-json]
    [webstack.handlers.api-data :as api-data]
    [webstack.handlers.default :as default]
    [webstack.handlers.page-home :as page-home]
@@ -9,7 +10,7 @@
 
 (def page-routes
   [["/" page-home/route]
-   ["/api/v1" {:middleware [[]]}
+   ["/api/v1" {:middleware [[middleware-json/wrap-json-response]]}
     ["/data" api-data/route]]])
 
 (def app (ring/ring-handler
