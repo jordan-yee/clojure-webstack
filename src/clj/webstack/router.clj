@@ -7,6 +7,9 @@
    [webstack.handlers.default :as default]
    [webstack.handlers.page-home :as page-home]))
 
+;; TODO: Best way to define differences between route definitions in during
+;; development/testing & production? (This probably just involves middleware.)
+
 (def page-routes
   [["/" page-home/route {:middleware [(middleware/get-wrap-defaults :page)]}]
    ["/api/v1" {:middleware [(middleware/get-wrap-defaults :api)
