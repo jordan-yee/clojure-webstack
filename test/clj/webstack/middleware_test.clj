@@ -18,4 +18,5 @@
                  ["/page" {:get handler
                            :middleware [(middleware/get-wrap-defaults :page)]}]))]
     (router request)
-    (is (contains? (:params @middleware-processed-request) :contains-params))))
+    (is (contains? (:params @middleware-processed-request) :contains-params)
+        "query params are extracted & keywordized into :params in request map")))
