@@ -10,13 +10,19 @@
 ;; TODO: Best way to define differences between route definitions in during
 ;; development/testing & production? (This probably just involves middleware.)
 
+(def page-middleware [[middleware/wrap-defaults middleware/site-defaults]])
+
+(def api-middleware [[middleware/wrap-defaults middleware/api-defaults]
+                     middleware/wrap-json-response])
+
+(def global-middleware [middleware/wrap-request-observer])
+
 (def page-routes
-  [["/" {:middleware [[middleware/wrap-defaults middleware/site-defaults]]}
+  [["/" {:middleware page-middleware}
     ["" page-home/route]]])
 
 (def api-routes
-  [["/api/v1" {:middleware [[middleware/wrap-defaults middleware/api-defaults]
-                            middleware/wrap-json-response]}
+  [["/api/v1" {:middleware api-middleware}
     ["/data" api-data/route]]])
 
 (def all-routes [page-routes api-routes])
@@ -26,4 +32,4 @@
           (ring/routes
            (ring/redirect-trailing-slash-handler)
            default/handler)
-          {:middleware [middleware/wrap-request-observer]}))
+          {:middleware global-middleware}))
