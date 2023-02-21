@@ -11,9 +11,9 @@
 ;; development/testing & production? (This probably just involves middleware.)
 
 (def page-routes
-  [["/" {:middleware [(middleware/get-wrap-defaults :page)]}
+  [["/" {:middleware [[middleware/wrap-defaults middleware/site-defaults]]}
     ["" page-home/route]]
-   ["/api/v1" {:middleware [(middleware/get-wrap-defaults :api)
+   ["/api/v1" {:middleware [[middleware/wrap-defaults middleware/api-defaults]
                             middleware/wrap-json-response]}
     ["/data" api-data/route]]])
 

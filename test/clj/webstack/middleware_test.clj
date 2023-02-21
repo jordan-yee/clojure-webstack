@@ -6,7 +6,7 @@
    [webstack.middleware :as middleware]))
 
 ;; TODO: Add tests with requests against `router/app` to test external
-;; middleware as each feature is actually utilized.
+;; middleware as each feature is actually utilized/required.
 
 (deftest params-test
   (let [request (mock/request :get "/page?contains-params=true")
@@ -16,7 +16,7 @@
         router (ring/ring-handler
                 (ring/router
                  ["/page" {:get handler
-                           :middleware [(middleware/get-wrap-defaults :page)]}]))]
+                           :middleware [[middleware/wrap-defaults middleware/site-defaults]]}]))]
     (router request)
     (is (contains? (:params @middleware-processed-request) :contains-params)
         "query params are extracted & keywordized into :params in request map")))
