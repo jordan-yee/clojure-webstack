@@ -1,3 +1,17 @@
-.text-bold {
-    font-weight: bold;
+.flex-top-level-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.flex-page-container {
+    display: flex;
+    flex-grow: 1;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
 }
