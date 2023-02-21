@@ -7,9 +7,6 @@
    [webstack.handlers.default :as default]
    [webstack.handlers.page-home :as page-home]))
 
-;; TODO: Best way to define differences between route definitions in during
-;; development/testing & production? (This probably just involves middleware.)
-
 (defn- make-page-middleware
   "Composes a collection of middleware to be applied to page requests using the
   supplied options."
