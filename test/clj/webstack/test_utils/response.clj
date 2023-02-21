@@ -1,5 +1,5 @@
 (ns webstack.test-utils.response
-  "Test utilities & helpers for page handlers."
+  "Test utilities & helpers dealing with Ring responses."
   (:require
    [cheshire.core :as json]))
 
@@ -11,7 +11,8 @@
   (= content-type (get-in response [:headers "Content-Type"])))
 
 (defn content-type-html? [response]
-  (has-content-type? "text/html" response))
+  (or (has-content-type? "text/html" response)
+      (has-content-type? "text/html; charset=utf-8" response)))
 
 (defn content-type-json? [response]
   (has-content-type? "application/json" response))
@@ -27,3 +28,9 @@
 
 (defn is-body-json? [response]
   (is-valid-json? (:body response)))
+
+(defn remove-set-cookie-header
+  "Removes the 'Set-Cookie' header, which returns differing 'ring-session'
+  values between different invokations of `router/app`."
+  [response]
+  (update response :headers dissoc "Set-Cookie"))
