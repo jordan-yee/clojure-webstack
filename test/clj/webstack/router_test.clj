@@ -9,6 +9,6 @@
 
 (deftest default-route-test
   (let [bad-request (mock/request :get "/page-that-doesnt-exist")
-        response (router/app bad-request)]
+        response ((router/make-app-handler) bad-request)]
     (is (= 404 (:status response))
         "requesting a non-existent page returns a 404")))

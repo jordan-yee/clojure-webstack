@@ -5,8 +5,8 @@
    [ring.mock.request :as mock]
    [webstack.middleware :as middleware]))
 
-;; TODO: Add tests with requests against `router/app` to test external
-;; middleware as each feature is actually utilized/required.
+;; TODO: Add tests for each registered external middleware as their features are
+;; actually utilized/required.
 
 (deftest params-test
   (let [request (mock/request :get "/page?contains-params=true")

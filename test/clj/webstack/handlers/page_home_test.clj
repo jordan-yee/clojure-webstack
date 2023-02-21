@@ -18,8 +18,8 @@
         "the home page request returns an html string")))
 
 (deftest route-test
-  (let [trailing-slash-response (router/app (mock/request :get "/"))
-        no-trailing-slash-response (router/app (mock/request :get ""))]
+  (let [trailing-slash-response ((router/make-app-handler) (mock/request :get "/"))
+        no-trailing-slash-response ((router/make-app-handler) (mock/request :get ""))]
     (is (= (response/remove-set-cookie-header trailing-slash-response)
            (response/remove-set-cookie-header no-trailing-slash-response))
         "home page is returned with or without the trailing slash")))

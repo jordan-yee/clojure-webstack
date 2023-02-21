@@ -27,9 +27,13 @@
 
 (def all-routes [page-routes api-routes])
 
-(def app (ring/ring-handler
-          (ring/router all-routes)
-          (ring/routes
-           (ring/redirect-trailing-slash-handler)
-           default/handler)
-          {:middleware global-middleware}))
+(defn make-app-handler
+  "Returns a Reitit ring-handler instance, which should be passed to `run-jetty`
+  when starting the web server."
+  []
+  (ring/ring-handler
+   (ring/router all-routes)
+   (ring/routes
+    (ring/redirect-trailing-slash-handler)
+    default/handler)
+   {:middleware global-middleware}))

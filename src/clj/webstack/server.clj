@@ -18,7 +18,7 @@
   ;; It has to do with reloadability--a var will be deref'd on each request.
   ;; Since we we're using tools.namespace/refresh we'll proceed without the var
   ;; wrapper to avoid the probably negligible performance hit.
-  (jetty/run-jetty router/app
+  (jetty/run-jetty (router/make-app-handler)
                    {:port 3000
                     ;; Prevent the server from blocking the thread for RDD
                     :join? false}))
