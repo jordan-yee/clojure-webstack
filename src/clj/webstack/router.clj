@@ -11,12 +11,15 @@
 ;; development/testing & production? (This probably just involves middleware.)
 
 (def page-routes
-  [["/" page-home/route {:middleware [(middleware/get-wrap-defaults :page)]}]
+  [["/" {:middleware [(middleware/get-wrap-defaults :page)]}
+    ["" page-home/route]]
    ["/api/v1" {:middleware [(middleware/get-wrap-defaults :api)
                             middleware/wrap-json-response]}
     ["/data" api-data/route]]])
 
 (def app (ring/ring-handler
           (ring/router page-routes)
-          default/handler
+          (ring/routes
+           (ring/redirect-trailing-slash-handler)
+           default/handler)
           {:middleware [middleware/wrap-request-observer]}))
