@@ -22,10 +22,14 @@
   ;; It has to do with reloadability--a var will be deref'd on each request.
   ;; Since we we're using tools.namespace/refresh we'll proceed without the var
   ;; wrapper to avoid the probably negligible performance hit.
-  (jetty/run-jetty (router/make-app-handler opts)
-                   {:port 3000
-                    ;; Prevent the server from blocking the thread for RDD
-                    :join? false}))
+  (let [{:keys [env]} opts]
+    (jetty/run-jetty (router/make-app-handler opts)
+                     (if (= :dev env)
+                       {:port 3000
+                        ;; Prevent the server from blocking the thread for RDD
+                        :join? false}
+                       ;; Use production config by default
+                       {}))))
 
 (defn stop-server [web-server]
   (println "webstack: stopping web server...")
@@ -38,7 +42,7 @@
 (def web-server-dev
   "During development, use this definition for the `web-server` state:
   ```
-  (mount/start-with-states #'server/web-server server/web-server-dev')
+  (mount/start-with-states {#'server/web-server server/web-server-dev})
   ```"
   {:start #(start-server {:env :dev})
    :stop #(stop-server web-server)})

@@ -7,11 +7,7 @@
    [webstack.server :as server])
   (:gen-class))
 
-(defn start []
-  (mount/start #'server/web-server))
-
 #_{:clj-kondo/ignore [:unused-binding]}
 (defn -main [& args]
   (println "Starting webstack....")
-  (start)
-  :ready)
+  (mount/start #'server/web-server))
