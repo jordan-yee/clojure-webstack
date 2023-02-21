@@ -6,7 +6,7 @@
    [webstack.server :as server]))
 
 (defn start []
-  (mount/start #'server/web-server))
+  (mount/start-with-states {#'server/web-server server/web-server-dev}))
 
 (defn stop []
   (mount/stop))
