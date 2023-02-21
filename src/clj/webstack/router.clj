@@ -12,13 +12,17 @@
 
 (def page-routes
   [["/" {:middleware [[middleware/wrap-defaults middleware/site-defaults]]}
-    ["" page-home/route]]
-   ["/api/v1" {:middleware [[middleware/wrap-defaults middleware/api-defaults]
+    ["" page-home/route]]])
+
+(def api-routes
+  [["/api/v1" {:middleware [[middleware/wrap-defaults middleware/api-defaults]
                             middleware/wrap-json-response]}
     ["/data" api-data/route]]])
 
+(def all-routes [page-routes api-routes])
+
 (def app (ring/ring-handler
-          (ring/router page-routes)
+          (ring/router all-routes)
           (ring/routes
            (ring/redirect-trailing-slash-handler)
            default/handler)
