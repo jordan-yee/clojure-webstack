@@ -62,5 +62,6 @@
    (ring/router (make-all-routes opts))
    (ring/routes
     (ring/redirect-trailing-slash-handler)
+    (ring/create-resource-handler {:path "/"})
     default/handler)
    {:middleware (make-global-middleware opts)}))

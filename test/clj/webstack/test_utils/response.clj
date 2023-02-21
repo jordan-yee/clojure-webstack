@@ -17,6 +17,9 @@
 (defn content-type-json? [response]
   (has-content-type? "application/json" response))
 
+(defn content-type-css? [response]
+  (has-content-type? "text/css" response))
+
 (defn- is-valid-json? [data]
   (try
     (json/parse-string data)
