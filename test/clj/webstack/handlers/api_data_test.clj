@@ -16,7 +16,7 @@
 
 (deftest route-test
   (let [request (mock/request :get "/api/v1/data")
-        response ((router/make-app-handler) request)]
+        response ((router/make-app-handler {:env :dev}) request)]
     (is (predicates/ok? response)
         "returns a success response")
     (is (response/content-type-json? response)
