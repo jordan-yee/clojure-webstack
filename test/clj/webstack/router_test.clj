@@ -6,9 +6,6 @@
    [webstack.router :as router]
    [webstack.test-utils.response :as response]))
 
-;; TODO: Add tests with requests against `router/app` to test external
-;; middleware as each feature is actually utilized.
-
 (deftest default-route-test
   (let [bad-request (mock/request :get "/page-that-doesnt-exist")
         response ((router/make-app-handler) bad-request)]
