@@ -18,8 +18,13 @@ a REPL:
   - Practicalli config (optional): https://practical.li/clojure/clojure-cli/practicalli-config/
 - Install Java: https://sdkman.io/
 - Install Node w/ npm: https://github.com/nvm-sh/nvm#installing-and-updating
+  - Global ShadowCLJS installation (optional): `npm install -g shadow-cljs`
+    - This will let you run the `shadow-cljs` command directly later.
+    - Without this, you can must run commands with `npx` like, `npx shadow-cljs help`.
 
-# Testing
+# Server
+
+## Testing
 
 Start a REPL w/ a test runner that automatically re-runs tests after each change:
 ```
@@ -27,7 +32,7 @@ clojure -M:repl/reloaded
 user=> (test-watch)
 ```
 
-# Development
+## Development
 
 To start a REPL for development run:
 ```
@@ -40,7 +45,7 @@ After making a change, run:
 user=> (reset)
 ```
 
-# Building
+## Building
 
 The version is set in `build.clj` as `<major>.<minor>.<git-revs>`, where the
 `<major>` and `<minor>` segments must be set manually, but the `<git-revs>`
@@ -56,10 +61,40 @@ Clean and build uberjar:
 clj -T:build uber
 ```
 
-# Running the Application
+## Running the Server
 
 After building you can run it with:
 ```
 # Remember to update the version in this command as needed!
 java -jar target/webstack-0.0.10-standalone.jar
 ```
+
+# Client
+
+## Testing
+
+TODO
+
+## Development
+
+To start building the client in watch mode with hot reloading run:
+```
+shadow-cljs watch app
+```
+
+## Building
+
+To create an optimized production build of the client run:
+```
+TODO
+```
+
+# Deploying the Full-Stack Web Application
+
+This project aims to be hosting service-agnostic, but here is the general
+architecture you'll be shooting for:
+- Create a production build of the client & its supporting assets, which outputs
+  to the `resources/public/` directory.
+- Create a production uberjar build of the server, which will contain the
+  contents of the `resources` directory.
+- Deploy the standalone uberjar to the hosting service of your choice.

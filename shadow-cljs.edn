@@ -1,0 +1,17 @@
+;; shadow-cljs configuration
+{:source-paths
+ ["dev/cljs"
+  "src/cljs"
+  "src/cljc"
+  "test/cljs"
+  "test/cljc"
+  "resources"]
+
+ :dependencies
+ []
+
+ :builds
+ {:app {:target :browser
+        :output-dir "resources/public/js"
+        :asset-path "/js"
+        :modules {:main {:entries [webstack.core]}}}}}
