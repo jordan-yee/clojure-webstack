@@ -1,7 +1,7 @@
 {
   "name": "webstack",
   "version": "1.0.0",
-  "description": "This is minimal-ish example implementation of a full stack web server using a select set of the latest (as of 2023) leading Clojure/Script libraries & practices.",
+  "description": "A template / reference implementation of a web application client that uses a select set of the latest (as of 2023) leading ClojureScript libraries & practices.",
   "main": "index.js",
   "directories": {
     "test": "test"
