@@ -3,10 +3,12 @@
   (:require
    [clojure.tools.namespace.repl :as tn]
    [mount.core :as mount]
-   [webstack.server :as server]))
+   [webstack.config :as config :refer [config]]
+   [webstack.server]))
 
 (defn start []
-  (mount/start-with-states {#'server/web-server server/web-server-dev}))
+  (-> (mount/swap {#'config (config/load-config-dev)})
+      (mount/start)))
 
 (defn stop []
   (mount/stop))

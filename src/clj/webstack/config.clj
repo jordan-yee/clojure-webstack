@@ -11,3 +11,8 @@
   "The application config, used for all mount states. This will include
   `config.edn` merged with ENV vars, and more."
   :start (load-config))
+
+(defn load-config-dev
+  "Loads the development config. Meant for use with `mount/swap`."
+  []
+  (load-config :resource "config-dev.edn"))

@@ -4,10 +4,10 @@
   being required from elsewhere."
   (:require
    [mount.core :as mount]
-   [webstack.server :as server])
+   [webstack.server])
   (:gen-class))
 
 #_{:clj-kondo/ignore [:unused-binding]}
 (defn -main [& args]
   (println "Starting webstack....")
-  (mount/start #'server/web-server))
+  (mount/start))

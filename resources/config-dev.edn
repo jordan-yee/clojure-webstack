@@ -1,0 +1,4 @@
+;; Development Config
+{:jetty {:port 3000
+         :join? false}
+ :router {:env :dev}}
