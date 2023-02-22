@@ -14,16 +14,10 @@ a REPL:
 
 # First Time Setup
 
-Install the [Practicalli Configuration for Clojure CLI](https://practical.li/clojure/clojure-cli/practicalli-config/)
-for a curated set of Clojure CLI-based tooling:
-```
-# Backup your existing user config if needed, then...
-rm -rf $HOME/.clojure
-git clone https://github.com/practicalli/clojure-deps-edn.git $HOME/.clojure
-```
-
-Actually, the essential aliases from the Practicalli config have been copied
-into this project's deps.edn, but others may still be useful.
+- Install Clojure w/ CLI tools: https://clojure.org/guides/install_clojure
+  - Practicalli config (optional): https://practical.li/clojure/clojure-cli/practicalli-config/
+- Install Java: https://sdkman.io/
+- Install Node w/ npm: https://github.com/nvm-sh/nvm#installing-and-updating
 
 # Testing
 
