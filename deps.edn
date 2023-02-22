@@ -4,6 +4,7 @@
  {cheshire/cheshire            {:mvn/version "5.11.0"}
   cprop/cprop                  {:mvn/version "0.1.19"}
   hiccup/hiccup                {:mvn/version "1.0.5"}
+  metosin/malli                {:mvn/version "0.10.1"}
   metosin/reitit               {:mvn/version "0.5.18"}
   metosin/ring-http-response   {:mvn/version "0.9.3"}
   mount/mount                  {:mvn/version "0.1.17"}
