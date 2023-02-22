@@ -18,7 +18,7 @@
     [:div.flex-top-level-container
      [:div#root.flex-page-container
       (loading-indicator)]]
-    (h/include-js "")]))
+    (h/include-js "/js/main.js")]))
 
 (defn handler [_]
   (-> home-page
