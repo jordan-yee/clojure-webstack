@@ -4,35 +4,42 @@ This is a template / reference implementation for a full stack web server that
 uses a select set of the latest (as of 2023) leading Clojure/Script libraries &
 practices.
 
-The goal is to provide a good baseline from which to build a small to mid-size
-full-stack web application. Getting a smooth development workflow takes quite a
-bit of setup. This project's primary goal is to start you in a place where the
-core technology setup work is done so that you can start cranking out the
-actual application you want to build. It intentionally stops short of key
-decisions like what database to use, how authentication/authorization should be
-implemented, and what client UI framework or style system to use.
+Getting a smooth and efficient development workflow requires quite a bit of
+setup and decision making up front. This project's primary goal is to start you
+in a place where the core technology setup work is done so that you can start
+cranking out the actual application you want to build. It should provide a good
+baseline from which to build a small to mid-size full-stack web application.
 
-Developer Experience Goals:
+Key Developer Experience Goals:
 - Support REPL Driven Development with `clojure.tools.namespace/refresh` support
 - Support Test Driven Development with a live test runner (Kaocha)
 - Support hot code reloading & first-class npm library support with ShadowCLJS
+- Include key tooling and instrumentation support
+  - Portal           : REPL-connected data inspector
+  - [TODO]Snitch     : Inline-def args & bindings for REPL use
+  - [TODO]Flowstorm  : Tracing debugger
+  - Function Schemas : Dynamic & static schema checking
 - Include the key tools or libraries that all Clojure-based web application
-  projects use or wish they used
-- Provide enough structure to make it obvious where to put application-specific
-  code or configuration
+  projects use or wish they used (while a few have acceptable alternatives, all
+  are well-established options).
+- Leave certain key decisions to the project such as:
+  - How authentication & authorization should be implemented
+  - What database to use
+  - UI framework or styling library
+  - Architecture/organization of the domain code
 
 Key Components Include:
 - deps.edn-based server project with:
-  - clojure.tools.namespace/refresh - REPL code reloading
-  - Mount                           - Stateful component management
-  - Ring                            - Interface for HTTP web server
-  - Jetty                           - Web Server
-  - Reitit                          - Routing
-  - Malli                           - Schemas
-  - Kaocha                          - Testing
+  - clojure.tools.namespace/refresh : REPL code reloading
+  - Mount                           : Stateful component management
+  - Ring                            : Interface for HTTP web server
+  - Jetty                           : Web Server
+  - Reitit                          : Routing
+  - Malli                           : Schemas
+  - Kaocha                          : Testing
 - ShadowCLJS-based client project with:
-  - Reagent                         - ReactJS wrapper
-  - Re-frame                        - State management
+  - Reagent                         : ReactJS wrapper
+  - Re-frame                        : State management
 
 TODO: Convert into an actual template...
 
