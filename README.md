@@ -51,6 +51,9 @@ a REPL:
 (mv/move-ns 'webstack.core 'my-app.core "src/clj/" ["test" "src"])
 ```
 
+> This project is intended for my own use, and reflects my own experience
+> regarding the best way to do things, which remains a work-in-progress.
+
 # First Time Setup
 
 - Install Clojure w/ CLI tools: https://clojure.org/guides/install_clojure
