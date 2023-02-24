@@ -44,10 +44,10 @@
   [f]
   (js/setTimeout (fn [_] (f)) 1000))
 
-(defn ^:export main []
+(defn main
+  "Entry point for the client program."
+  []
   (println "Client started...")
   (rf/dispatch-sync [::set-initial-data {:home-page
                                          {:content "Welcome to Webstack!"}}])
   (fake-load mount-app))
-
-(main)
