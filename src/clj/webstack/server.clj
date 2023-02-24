@@ -10,13 +10,10 @@
   "Start the Jetty web server. Using the configuration defined by the `:jetty`
   key from the `config` component."
   []
-  (println "webstack: starting web server...")
-  ;; TODO: print server URL on start
   (jetty/run-jetty (router/make-app-handler (:router config))
                    (:jetty config)))
 
 (defn- stop-server [web-server]
-  (println "webstack: stopping web server...")
   (.stop web-server))
 
 (defstate web-server
