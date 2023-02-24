@@ -3,9 +3,17 @@
    [clojure.test :refer :all]
    [ring.mock.request :as mock]
    [ring.util.http-predicates :as predicates]
+   [mount.core :as mount]
+   [webstack.client-manifest :refer [client-manifest]]
    [webstack.handlers.page-home :as page-home]
    [webstack.router :as router]
    [webstack.test-utils.response :as response]))
+
+(defn start-mount-states [f]
+  (mount/start #'client-manifest)
+  (f))
+
+(use-fixtures :once start-mount-states)
 
 (deftest handler-test
   (let [request (mock/request :get  "/")
