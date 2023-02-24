@@ -40,5 +40,16 @@
                 "--middleware" "[cider.nrepl/cider-middleware]"
                 "--interactive"
                 "-f" "rebel-readline.main/-main"]}
+
+  :watch-test
+  {:extra-paths ["test/clj" "test/cljc"]
+   :extra-deps
+   {lambdaisland/kaocha {:mvn/version "1.77.1236"}
+    ring/ring-mock {:mvn/version "0.4.0"}}
+   :exec-fn kaocha.runner/exec-fn
+   :exec-args {:watch? true
+               :skip-meta :slow
+               :fail-fast? true}}
+
   :build {:deps {io.github.clojure/tools.build {:mvn/version "0.9.3"}}
           :ns-default build}}}

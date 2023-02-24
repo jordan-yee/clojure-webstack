@@ -68,7 +68,12 @@ a REPL:
 
 ## Testing
 
-Start a REPL w/ a test runner that automatically re-runs tests after each change:
+To just start a test runner that automatically re-runs tests after each change:
+```
+clojure -X:watch-test
+```
+
+To start the test runner from the REPL:
 ```
 clojure -M:repl/reloaded
 user=> (test-watch)
