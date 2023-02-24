@@ -128,7 +128,7 @@ shadow-cljs watch app
 
 To create an optimized production build of the client run:
 ```
-TODO
+shadow-cljs release app
 ```
 
 # Deploying the Full-Stack Web Application
