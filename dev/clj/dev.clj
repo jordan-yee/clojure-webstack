@@ -11,7 +11,7 @@
 ;; https://github.com/ptaoussanis/timbre#set-the-minimum-logging-level
 ;; Set min-level to the highest to keep loggins quiet at the REPL
 ;; Not sure if this is the right approach
-(timbre/set-min-level! :report)
+(timbre/set-min-level! :error)
 
 (defn print-mount-actions
   "Based on `mount-up.core/log`, but using println's instead of logging to limit
