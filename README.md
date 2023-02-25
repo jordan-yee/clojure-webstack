@@ -16,7 +16,7 @@ Key Developer Experience Goals:
 - Support hot code reloading & first-class npm library support with ShadowCLJS
 - Include key tooling and instrumentation support
   - Portal           : REPL-connected data inspector
-  - [TODO]Snitch     : Inline-def args & bindings for REPL use
+  - Snitch           : Inline-def args & bindings for REPL use
   - [TODO]Flowstorm  : Tracing debugger
   - Function Schemas : Dynamic & static schema checking
 - Include the key tools or libraries that all Clojure-based web application

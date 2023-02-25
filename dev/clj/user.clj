@@ -7,7 +7,8 @@
    [kaocha.repl :as k]
    [kaocha.watch :as k-watch]
    [portal.api :as portal]
-   [puget.printer :as puget]))
+   [puget.printer :as puget]
+   [snitch.core :refer [*fn *let defmethod* defn*]]))
 
 (defn test-watch
   "Start the Kaocha test watcher."
