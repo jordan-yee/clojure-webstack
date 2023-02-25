@@ -128,7 +128,12 @@ java -jar target/webstack-0.0.10-standalone.jar
 
 ## Testing
 
-TODO
+To start the test watcher run:
+```
+shadow-cljs watch test
+```
+
+The test results will be shown in the browser at http://localhost:8021
 
 ## Development
 
