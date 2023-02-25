@@ -4,6 +4,7 @@
   (:require
    [clojure.repl :refer :all]
    [dev :refer [go reset]]
+   [flow-storm.api :as fs-api]
    [kaocha.repl :as k]
    [kaocha.watch :as k-watch]
    [portal.api :as portal]
@@ -22,6 +23,12 @@
 (defn stop-portal []
   (portal/clear)
   (portal/close))
+
+(defn start-flowstorm []
+  (fs-api/local-connect))
+
+(defn stop-flowstorm []
+  (fs-api/stop))
 
 (defn pprint-last
   "Print the value last returned at the REPL, formatted & colorized w/ puget."

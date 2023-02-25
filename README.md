@@ -17,7 +17,7 @@ Key Developer Experience Goals:
 - Include key tooling and instrumentation support
   - Portal           : REPL-connected data inspector
   - Snitch           : Inline-def args & bindings for REPL use
-  - [TODO]Flowstorm  : Tracing debugger
+  - Flowstorm        : Tracing debugger
   - Function Schemas : Dynamic & static schema checking
 - Include the key tools or libraries that all Clojure-based web application
   projects use or wish they used (while a few have acceptable alternatives, all
