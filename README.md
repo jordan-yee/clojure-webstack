@@ -132,9 +132,11 @@ TODO
 
 ## Development
 
-To start building the client in watch mode with hot reloading run:
+To start building the client in watch mode and connect a a ClojureScript REPL:
 ```
-shadow-cljs watch app
+shadow-cljs clj-repl
+=> (shadow/watch :app)
+=> (shadow/repl :app)
 ```
 
 ## Building
