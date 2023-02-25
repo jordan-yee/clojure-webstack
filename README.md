@@ -64,6 +64,14 @@ a REPL:
     - This will let you run the `shadow-cljs` command directly later.
     - Without this, you can must run commands with `npx` like, `npx shadow-cljs help`.
 
+# Updating Dependencies
+
+Assuming you installed the Practicalli config, you can identify available
+dependency updates by running:
+```
+clojure -T:search/outdated
+```
+
 # Server
 
 ## Testing
