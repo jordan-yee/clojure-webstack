@@ -19,7 +19,7 @@
     [:div.flex-top-level-container
      [:div#root.flex-page-container
       (render-loading-indicator)]]
-    (h/include-js (str "/js/" (cm/get-client-module-filename client-manifest)))]))
+    (h/include-js (str "/js/app/" (cm/get-client-module-filename client-manifest)))]))
 
 (defn handler [_]
   (-> (render-home-page)

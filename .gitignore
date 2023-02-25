@@ -6,8 +6,6 @@ target/
 .rebel_readline_history
 node_modules/
 logs/
-resources/public/js/cljs-runtime
-resources/public/js/manifest.edn
-resources/public/js/main*.js
 .shadow-cljs
+resources/public/js/app
 out/test

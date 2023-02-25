@@ -81,7 +81,7 @@ To just start a test runner that automatically re-runs tests after each change:
 clojure -X:watch-test
 ```
 
-To start the test runner from the REPL:
+OR to start the test runner from the REPL:
 ```
 clojure -M:repl/reloaded
 user=> (test-watch)
@@ -137,7 +137,7 @@ The test results will be shown in the browser at http://localhost:8021
 
 ## Development
 
-To start building the client in watch mode and connect a a ClojureScript REPL:
+To start building the client in watch mode with a connected a ClojureScript REPL:
 ```
 shadow-cljs clj-repl
 => (shadow/watch :app)
@@ -146,10 +146,17 @@ shadow-cljs clj-repl
 
 ## Building
 
+To clean existing build artifacts run:
+```
+clj -T:build clean-client
+```
+
 To create an optimized production build of the client run:
 ```
 shadow-cljs release app
 ```
+
+> This outputs a file with a hash-versioned name to prevents caching issues.
 
 # Deploying the Full-Stack Web Application
 

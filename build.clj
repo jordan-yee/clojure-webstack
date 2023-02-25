@@ -15,6 +15,9 @@
 (defn clean [_]
   (b/delete {:path "target"}))
 
+(defn clean-client [_]
+  (b/delete {:path "resources/public/js/app"}))
+
 (defn uber [_]
   (clean nil)
   (b/copy-dir {:src-dirs ["src/clj" "resources"]

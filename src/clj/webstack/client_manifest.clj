@@ -10,7 +10,7 @@
 
 (defn- read-client-manifest []
   (try
-    (edn/read-string (slurp "resources/public/js/manifest.edn"))
+    (edn/read-string (slurp "resources/public/js/app/manifest.edn"))
     (catch FileNotFoundException e
       (timbre/error e
                     "You probably need to re/build the client then restart the server."))))

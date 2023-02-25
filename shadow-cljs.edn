@@ -22,8 +22,8 @@
 
  :builds
  {:app {:target :browser
-        :output-dir "resources/public/js"
-        :asset-path "/js"
+        :output-dir "resources/public/js/app"
+        :asset-path "/js/app"
         :module-hash-names true
         :modules {:main {:init-fn webstack.core/main}}
         :devtools {:preloads [day8.re-frame-10x.preload]}
