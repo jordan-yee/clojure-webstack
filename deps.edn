@@ -10,6 +10,7 @@
   metosin/reitit             {:mvn/version "0.5.18"}
   metosin/ring-http-response {:mvn/version "0.9.3"}
   mount/mount                {:mvn/version "0.1.17"}
+  org.clojure/clojure        {:mvn/version "1.11.1"}
   potemkin/potemkin          {:mvn/version "0.4.6"}
   ring/ring                  {:mvn/version "1.9.6"}
   ring/ring-defaults         {:mvn/version "0.3.4"}
