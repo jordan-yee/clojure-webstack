@@ -170,6 +170,11 @@ you'd have to configure in CI/CD:
   contents of the `resources` directory.
 - Deploy the standalone uberjar to the hosting service of your choice.
 
+# Known Issues
+
+- Attempting to use re-frame-debux tracing macros causes re-frame-10x to explode
+  after mousing over it.
+
 # QuickRef
 
 > Each code block represents a different terminal.
