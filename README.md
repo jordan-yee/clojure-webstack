@@ -183,7 +183,6 @@ shadow-cljs clj-repl
 ```
 shadow-cljs clj-repl
 => (shadow/watch :app)
-=> (shadow/watch :test)
 => (shadow/repl :app)
 ```
 
