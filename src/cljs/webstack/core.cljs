@@ -3,6 +3,7 @@
   (:require
    [webstack.app-db.initial-values :as initial-values]
    [reagent.dom :as rd]
+   [day8.re-frame.tracing :refer-macros [fn-traced defn-traced]]
    [webstack.re-frame-helpers :refer [<sub >evt] :as rfh]
    [re-frame.core :as rf]))
 
@@ -13,8 +14,8 @@
 
 (rfh/reg-event-db
  ::update-welcome-message
- (fn [db [_ new-message]]
-   (assoc-in db [:pages :home :content] new-message)))
+ (fn-traced [db [_ new-message]]
+            (assoc-in db [:pages :home :content] new-message)))
 
 (rf/reg-fx
  ::alert
@@ -23,17 +24,14 @@
 
 (rfh/reg-event-fx
  ::display-welcome-message-alert
- (fn [_ [_ new-message]]
-   {::alert new-message}))
+ (fn-traced [_ [_ new-message]]
+            {::alert new-message}))
 
 (defn home-page []
   (let [content (<sub [::welcome-message])
         welcome-message "Welcome to the updated Webstack!"]
     [:div
      [:h1 "Home Page"]
-     [:button
-      {:on-click #(>evt [::set-initial-data])}
-      "Reset"]
      [:button
       {:on-click #(>evt [::update-welcome-message welcome-message])}
       "Update Message"]
@@ -48,8 +46,8 @@
 
 (rfh/reg-event-db
  ::set-initial-data
- (fn [_ _]
-   (initial-values/make-initial-values)))
+ (fn-traced [_ _]
+            (initial-values/make-initial-values)))
 
 (defn- ^:dev/after-load mount-app []
   (rd/render [page-container home-page]
