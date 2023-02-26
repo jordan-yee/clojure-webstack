@@ -167,3 +167,27 @@ architecture you'll be shooting for:
 - Create a production uberjar build of the server, which will contain the
   contents of the `resources` directory.
 - Deploy the standalone uberjar to the hosting service of your choice.
+
+# QuickRef
+
+> Each code block represents a different terminal.
+
+```
+shadow-cljs watch test
+```
+
+```
+shadow-cljs clj-repl
+=> (shadow/watch :app)
+=> (shadow/repl :app)
+```
+
+```
+clojure -X:watch-test
+```
+
+```
+clojure -M:repl/reloaded
+user=> (go)
+user=> (reset)
+```
