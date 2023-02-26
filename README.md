@@ -127,9 +127,10 @@ java -jar target/webstack-0.0.10-standalone.jar
 
 ## Testing
 
-To start the test watcher run:
+To start the test watcher in a REPL run:
 ```
-shadow-cljs watch test
+shadow-cljs clj-repl
+=> (shadow/watch :test)
 ```
 
 The test results will be shown in the browser at http://localhost:8021
@@ -172,14 +173,17 @@ architecture you'll be shooting for:
 # QuickRef
 
 > Each code block represents a different terminal.
+> Testing & development instances are all kept separate.
 
 ```
-shadow-cljs watch test
+shadow-cljs clj-repl
+=> (shadow/watch :test)
 ```
 
 ```
 shadow-cljs clj-repl
 => (shadow/watch :app)
+=> (shadow/watch :test)
 => (shadow/repl :app)
 ```
 
