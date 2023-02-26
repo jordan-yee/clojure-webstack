@@ -1,9 +1,8 @@
 (ns webstack.app-db.initial-values
-  "This namespace consolidates all initial values for re-frame's app-db.")
-
-;; TODO: Move this to a ns related to the home page
-(def home-page-initial-values {:home {:content "Welcome to Webstack!"}})
+  "This namespace consolidates all initial values for re-frame's app-db."
+  (:require
+   [webstack.pages.home.state :as home-state]))
 
 (defn make-initial-values []
-  (merge {:pages home-page-initial-values}))
+  (merge {:pages {:home home-state/initial-values}}))
 

@@ -1,43 +1,14 @@
 (ns webstack.core
   "This is the entry point into the ClojureScript client application."
   (:require
-   [webstack.app-db.initial-values :as initial-values]
+   [re-frame.core :as rf]
    [reagent.dom :as rd]
-   [webstack.re-frame-helpers :refer [<sub >evt] :as rfh]
-   [re-frame.core :as rf]))
+   [webstack.app-db.initial-values :as initial-values]
+   [webstack.pages.home.view :refer [home-page]]
+   [webstack.re-frame-helpers :as rfh]))
 
-(rf/reg-sub
- ::welcome-message
- (fn [db _]
-   (get-in db [:pages :home :content])))
-
-(rfh/reg-event-db
- ::update-welcome-message
- (fn [db [_ new-message]]
-   (assoc-in db [:pages :home :content] new-message)))
-
-(rf/reg-fx
- ::alert
- (fn [message]
-   (js/alert message)))
-
-(rfh/reg-event-fx
- ::display-welcome-message-alert
- (fn [_ [_ new-message]]
-   {::alert new-message}))
-
-(defn home-page []
-  (let [content (<sub [::welcome-message])
-        welcome-message "Welcome to the updated Webstack!"]
-    [:div
-     [:h1 "Home Page"]
-     [:button
-      {:on-click #(>evt [::update-welcome-message welcome-message])}
-      "Update Message"]
-     [:button
-      {:on-click #(>evt [::display-welcome-message-alert welcome-message])}
-      "Welcome Alert"]
-     [:p content]]))
+;; TODO: Refactor home-page stuff into other namespaces
+;; TODO: Configure client-side routing
 
 (defn page-container [content]
   [:div {:style {:margin "1em"}}
