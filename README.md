@@ -162,8 +162,8 @@ shadow-cljs release app
 
 # Deploying the Full-Stack Web Application
 
-This project aims to be hosting service-agnostic, but here is the general
-architecture you'll be shooting for:
+This project aims to be hosting service-agnostic, but here are the rough steps
+you'd have to configure in CI/CD:
 - Create a production build of the client & its supporting assets, which outputs
   to the `resources/public/` directory.
 - Create a production uberjar build of the server, which will contain the
