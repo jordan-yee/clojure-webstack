@@ -5,6 +5,9 @@
    [webstack.app-db.schema :as db-schema]
    [webstack.utils :as utils]))
 
+(def <sub (comp deref rf/subscribe))
+(def >evt rf/dispatch)
+
 (def standard-interceptors
   "Inteceptors that should be applied to all events."
   [(utils/when-debug-v rf/debug)
