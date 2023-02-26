@@ -19,3 +19,18 @@
    (rf/reg-event-db id
                     [standard-interceptors interceptors]
                     handler-fn)))
+
+(def standard-interceptors-fx
+  "Inteceptors that should be applied to all events."
+  [(utils/when-debug-v rf/debug)
+   (utils/when-debug-fn rf/after #(when % (db-schema/validate-app-db %)))])
+
+(defn reg-event-fx
+  "Wrapper for `reg-event-db` that applies our application's standard
+  interceptors."
+  ([id handler-fn]
+   (rf/reg-event-fx id standard-interceptors-fx handler-fn))
+  ([id interceptors handler-fn]
+   (rf/reg-event-fx id
+                    [standard-interceptors-fx interceptors]
+                    handler-fn)))
