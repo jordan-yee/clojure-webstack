@@ -3,11 +3,11 @@
   (:require
    [webstack.app-db.initial-values :as initial-values]
    [reagent.dom :as rd]
-   [webstack.re-frame-helpers :as rfh]
+   [webstack.re-frame-helpers :refer [<sub >evt] :as rfh]
    [re-frame.core :as rf]))
 
 (rf/reg-sub
- ::home-page-content
+ ::welcome-message
  (fn [db _]
    (get-in db [:pages :home :content])))
 
@@ -16,13 +16,30 @@
  (fn [db [_ new-message]]
    (assoc-in db [:pages :home :content] new-message)))
 
+(rf/reg-fx
+ ::alert
+ (fn [message]
+   (js/alert message)))
+
+(rfh/reg-event-fx
+ ::display-welcome-message-alert
+ (fn [_ [_ new-message]]
+   {::alert new-message}))
+
 (defn home-page []
-  (let [content @(rf/subscribe [::home-page-content])]
+  (let [content (<sub [::welcome-message])
+        welcome-message "Welcome to the updated Webstack!"]
     [:div
      [:h1 "Home Page"]
      [:button
-      {:on-click #(rf/dispatch [::update-welcome-message "Welcome to the updated Webstack!"])}
-      "Update"]
+      {:on-click #(>evt [::set-initial-data])}
+      "Reset"]
+     [:button
+      {:on-click #(>evt [::update-welcome-message welcome-message])}
+      "Update Message"]
+     [:button
+      {:on-click #(>evt [::display-welcome-message-alert welcome-message])}
+      "Welcome Alert"]
      [:p content]]))
 
 (defn page-container [content]
@@ -34,7 +51,7 @@
  (fn [_ _]
    (initial-values/make-initial-values)))
 
-(defn- mount-app []
+(defn- ^:dev/after-load mount-app []
   (rd/render [page-container home-page]
              (js/document.getElementById "root")))
 
