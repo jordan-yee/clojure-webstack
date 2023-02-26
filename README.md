@@ -42,12 +42,11 @@ Key Components Include:
   - Re-frame                        : State management
 
 TODO: Convert into an actual template...
-
+TODO: Can we do this more simply with a simple sed script?
 To use this project as a template, first clone it, then you can rename the
 project namespace prefix using `clojure.tools.namespace.move/move-ns` from
 a REPL:
 ```
-;; TODO: adapt this example call into a script to rename all `webstack` segments
 (mv/move-ns 'webstack.core 'my-app.core "src/clj/" ["test" "src"])
 ```
 
@@ -143,6 +142,8 @@ shadow-cljs clj-repl
 => (shadow/watch :app)
 => (shadow/repl :app)
 ```
+
+TODO: Include Devcards or Storybook?
 
 ## Building
 
