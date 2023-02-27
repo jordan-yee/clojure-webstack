@@ -1,6 +1,7 @@
 (ns webstack.pages.home.state
   "Re-frame registrations related to home page-specific state."
   (:require
+   [webstack.app-db.root-subs :as root-subs]
    [webstack.re-frame-helpers :as rfh]
    [re-frame.core :as rf]))
 
@@ -11,9 +12,16 @@
 (def assoc-in-context (rfh/make-assoc-in-context root-path))
 
 (rf/reg-sub
+ ::context
+ :<- [::root-subs/pages]
+ (fn [pages _]
+   (get pages :home)))
+
+(rf/reg-sub
  ::welcome-message
- (fn [db _]
-   (get-in-context db :content)))
+ :<- [::context]
+ (fn [context _]
+   (get context :content)))
 
 (rfh/reg-event-db
  ::update-welcome-message
