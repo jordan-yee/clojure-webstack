@@ -7,7 +7,6 @@
    [webstack.pages.home.view :refer [home-page]]
    [webstack.re-frame-helpers :as rfh]))
 
-;; TODO: Refactor home-page stuff into other namespaces
 ;; TODO: Configure client-side routing
 
 (defn page-container [content]
