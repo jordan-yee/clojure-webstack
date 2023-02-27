@@ -10,6 +10,7 @@
   "Build the schema for all of `app-db`."
   []
   [:map {:closed true}
+   [:matched-route :map]
    [:pages [:map {:closed true}
             [:home home-schema/schema]]]])
 

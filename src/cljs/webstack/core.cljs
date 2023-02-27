@@ -4,14 +4,19 @@
    [re-frame.core :as rf]
    [reagent.dom :as rd]
    [webstack.app-db.initial-values :as initial-values]
-   [webstack.pages.home.view :refer [home-page]]
-   [webstack.re-frame-helpers :as rfh]))
+   [webstack.re-frame-helpers :as rfh :refer [<sub]]
+   [webstack.router :as router]))
 
-;; TODO: Configure client-side routing
-
-(defn page-container [content]
-  [:div {:style {:margin "1em"}}
-   [content]])
+(defn app-container []
+  (let [current-page (<sub [::router/current-page])]
+    [:div {:style {:margin "1em"}}
+     ;; TODO: implement basic html nav
+     [:a {:href "/"}
+      "home"]
+     [:span " "]
+     [:a {:href "/other"}
+      "other"]
+     [current-page]]))
 
 (rfh/reg-event-db
  ::set-initial-data
@@ -19,7 +24,7 @@
    (initial-values/make-initial-values)))
 
 (defn- ^:dev/after-load mount-app []
-  (rd/render [page-container home-page]
+  (rd/render [app-container]
              (js/document.getElementById "root")))
 
 (defn- fake-load
@@ -31,5 +36,6 @@
   "Entry point for the client program."
   []
   (println "Client started...")
+  (router/init!)
   (rf/dispatch-sync [::set-initial-data])
   (fake-load mount-app))
