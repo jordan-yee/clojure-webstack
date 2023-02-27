@@ -33,20 +33,18 @@
 (defn- update-match [update-fn]
   (>evt [::update-matched-route update-fn]))
 
-;; TODO: is this actually an appropriate name for this function?
-;; TODO: what is this really doing?
-;; TODO: understand controllers better
-(defn- transition-controllers [new-match old-match]
+(defn- transition-controllers
+  "Effectively calls relevant `start` or `stop` controller functions when
+  navigating to a new route. Beyond that, maintains controller identities
+  which determines which lifecycle functions should be called."
+  [new-match old-match]
   (assoc new-match :controllers
          (rfc/apply-controllers (:controllers old-match) new-match)))
 
 (defn- on-navigate [new-match _history]
-  #_(js/console.log "webstack.router/on-navigate called:")
-  #_(js/console.log "new-match" new-match)
-  #_(js/console.log "history" _history)
   (update-match (fn [old-match]
-                  ;; TODO: why is this when check needed?
-                  ;; TODO: when would new-match ever be nil (or falsey)?
+                  ;; Why is this `when` check needed (it's in examples)?
+                  ;; When would `new-match` ever be nil?
                   (when new-match
                     (transition-controllers new-match old-match)))))
 
