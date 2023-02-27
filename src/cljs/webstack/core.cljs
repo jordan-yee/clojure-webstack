@@ -3,6 +3,7 @@
   (:require
    [re-frame.core :as rf]
    [reagent.dom :as rd]
+   [reitit.frontend.easy :as rfe]
    [webstack.app-db.initial-values :as initial-values]
    [webstack.re-frame-helpers :as rfh :refer [<sub]]
    [webstack.router :as router]))
@@ -11,10 +12,10 @@
   (let [current-page (<sub [::router/current-page])]
     [:div {:style {:margin "1em"}}
      ;; TODO: implement basic html nav
-     [:a {:href "/"}
+     [:a {:href (rfe/href ::router/home)}
       "home"]
      [:span " "]
-     [:a {:href "/other"}
+     [:a {:href (rfe/href ::router/other)}
       "other"]
      [current-page]]))
 
