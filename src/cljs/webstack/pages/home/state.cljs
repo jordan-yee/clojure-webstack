@@ -5,7 +5,7 @@
    [webstack.re-frame-helpers :as rfh]
    [re-frame.core :as rf]))
 
-(def initial-values {:content "Welcome to Webstack!"})
+(def initial-values {:content "Are you new here?"})
 
 (def root-path [:pages :home])
 (def get-in-context (rfh/make-get-in-context root-path))
@@ -27,13 +27,3 @@
  ::update-welcome-message
  (fn [db [_ new-message]]
    (assoc-in-context db :content new-message)))
-
-(rf/reg-fx
- ::alert
- (fn [message]
-   (js/alert message)))
-
-(rfh/reg-event-fx
- ::display-welcome-message-alert
- (fn [_ [_ new-message]]
-   {::alert new-message}))

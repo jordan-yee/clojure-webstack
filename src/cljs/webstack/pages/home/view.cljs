@@ -5,14 +5,16 @@
    [webstack.pages.home.state :as state]))
 
 (defn home-page []
-  (let [content (<sub [::state/welcome-message])
-        welcome-message "Welcome to the updated Webstack!"]
+  (let [content (<sub [::state/welcome-message])]
     [:div
      [:h1 "Home Page"]
+     [:p content]
      [:button
-      {:on-click #(>evt [::state/update-welcome-message welcome-message])}
-      "Update Message"]
+      {:on-click #(>evt [::state/update-welcome-message "Welcome to Webstack!"])}
+      "Yes"]
      [:button
-      {:on-click #(>evt [::state/display-welcome-message-alert welcome-message])}
-      "Welcome Alert"]
-     [:p content]]))
+      {:on-click #(>evt [::state/update-welcome-message "Welcome back to Webstack!"])}
+      "No"]
+     [:button
+      {:on-click #(>evt [::state/update-welcome-message (:content state/initial-values)])}
+      "Reset"]]))
