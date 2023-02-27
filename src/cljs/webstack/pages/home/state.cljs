@@ -1,15 +1,16 @@
 (ns webstack.pages.home.state
   "Re-frame registrations related to home page-specific state."
   (:require
+   [re-frame.core :as rf]
    [webstack.app-db.root-subs :as root-subs]
    [webstack.re-frame-helpers :as rfh]
-   [re-frame.core :as rf]))
+   [webstack.utils :as utils]))
 
 (def initial-values {:content "Are you new here?"})
 
 (def root-path [:pages :home])
-(def get-in-context (rfh/make-get-in-context root-path))
-(def assoc-in-context (rfh/make-assoc-in-context root-path))
+(def get-in-context (utils/make-get-in-context root-path))
+(def assoc-in-context (utils/make-assoc-in-context root-path))
 
 (rf/reg-sub
  ::context
