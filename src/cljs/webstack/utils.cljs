@@ -16,8 +16,7 @@
 
 (defn make-get-in-context
   "Return a `get-in`-like function that performs the lookup starting at the
-  given `root-path` for a target context. This simplifies re-frame reg-sub
-  handlers and other lookups for nested contexts."
+  given `root-path` for a target context."
   [root-path]
   (fn [db ks]
     (->> ks
@@ -27,8 +26,7 @@
 
 (defn make-assoc-in-context
   "Return an `assoc-in`-like function that sets a value at a path starting at
-  the given `root-path` for a target context. This simplifies re-frame
-  reg-event handlers and other setters for nested contexts."
+  the given `root-path` for a target context."
   [root-path]
   (fn [db ks v]
     (->> ks
