@@ -20,7 +20,7 @@
 (rfh/reg-event-db
  ::update-matched-route
  (fn [db [_ update-fn]]
-   (update-in-context db [:matched-route :data :view] update-fn)))
+   (update-in-context db :matched-route update-fn)))
 
 (re-frame/reg-sub
  ::current-page

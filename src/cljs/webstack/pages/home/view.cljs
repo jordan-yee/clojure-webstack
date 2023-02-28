@@ -18,8 +18,3 @@
      [:button
       {:on-click #(>evt [::state/update-welcome-message (:content state/initial-values)])}
       "Reset"]]))
-
-(def route {:name ::home
-            :view home-page
-            :controllers [{:start (fn [_] (js/console.log :start "home-page start"))
-                           :stop (fn [_] (js/console.log :start "home-page stop"))}]})

@@ -6,16 +6,17 @@
    [reitit.frontend.easy :as rfe]
    [webstack.app-db.initial-values :as initial-values]
    [webstack.re-frame-helpers :as rfh :refer [<sub]]
+   [webstack.router.state :as router-state]
    [webstack.router :as router]))
 
 (defn app-container []
-  (let [current-page (<sub [::router/current-page])]
+  (let [current-page (<sub [::router-state/current-page])]
     [:div {:style {:margin "1em"}}
      ;; TODO: implement basic html nav
-     [:a {:href (rfe/href ::router/home)}
+     [:a {:href (rfe/href :webstack.pages.home.route/home)}
       "home"]
      [:span " "]
-     [:a {:href (rfe/href ::router/other)}
+     [:a {:href (rfe/href :webstack.router.routes/other)}
       "other"]
      [current-page]]))
 
