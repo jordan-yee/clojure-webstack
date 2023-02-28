@@ -38,6 +38,6 @@
   "Entry point for the client program."
   []
   (println "Client started...")
-  (router/init!)
   (rf/dispatch-sync [::set-initial-data])
+  (router/init!)
   (fake-load mount-app))
