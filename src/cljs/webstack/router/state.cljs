@@ -1,7 +1,7 @@
 (ns webstack.router.state
   "Re-frame registrations related to router state."
   (:require
-   [re-frame.core :as re-frame]
+   [re-frame.core :as rf]
    [webstack.app-db.root-subs :as root-subs]
    [webstack.re-frame-helpers :as rfh]
    [webstack.utils :as utils]))
@@ -22,7 +22,7 @@
  (fn [db [_ update-fn]]
    (update-in-context db :matched-route update-fn)))
 
-(re-frame/reg-sub
+(rf/reg-sub
  ::current-page
  :<- [::root-subs/router]
  (fn [router _]
