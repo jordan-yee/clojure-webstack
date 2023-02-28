@@ -127,24 +127,24 @@ java -jar target/webstack-0.0.10-standalone.jar
 
 ## Testing
 
-To start the test watcher in a REPL run:
+To start the test watcher run:
 ```
-shadow-cljs clj-repl
-=> (shadow/watch :test)
+shadow-cljs watch test
 ```
 
-The test results will be shown in the browser at http://localhost:8021
+The test results will be shown in the browser at: http://localhost:8021
 
 ## Development
 
-To start building the client in watch mode with a connected a ClojureScript REPL:
+To start building the client in watch mode run:
 ```
-shadow-cljs clj-repl
-=> (shadow/watch :app)
-=> (shadow/repl :app)
+shadow-cljs watch app
 ```
 
-TODO: Include Devcards or Storybook?
+To start a ClojureScript REPL connected to the development build run:
+```
+shadow-cljs cljs-repl app
+```
 
 ## Building
 
@@ -177,26 +177,19 @@ you'd have to configure in CI/CD:
 
 # QuickRef
 
-> Each code block represents a different terminal.
-> Testing & development instances are all kept separate.
-
+Client:
 ```
-shadow-cljs clj-repl
-=> (shadow/watch :test)
-```
-
-```
-shadow-cljs clj-repl
-=> (shadow/watch :app)
-=> (shadow/repl :app)
+shadow-cljs watch test
+# Open [test page](http://localhost:8021/) in your browser
+shadow-cljs watch app
+shadow-cljs cljs-repl app
 ```
 
+Server:
 ```
 clojure -X:watch-test
-```
-
-```
 clojure -M:repl/reloaded
 user=> (go)
 user=> (reset)
+# Open [client](http://localhost:3000/) in your browser
 ```
