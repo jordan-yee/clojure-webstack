@@ -1,6 +1,5 @@
 (ns webstack.router.routes
   (:require
-   [reitit.frontend :as rf]
    [webstack.pages.home.route :as home]))
 
 (def other-route
@@ -11,7 +10,6 @@
                   :stop (fn [_] (js/console.log :start "other-page stop"))}]})
 
 (def routes
-  (rf/router
-   ["/"
-    ["" home/route]
-    ["other" other-route]]))
+  ["/"
+   ["" home/route]
+   ["other" other-route]])

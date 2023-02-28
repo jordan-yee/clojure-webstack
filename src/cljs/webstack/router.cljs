@@ -1,6 +1,7 @@
 (ns webstack.router
   "Client-side routing."
   (:require
+   [reitit.frontend :as rf]
    [reitit.frontend.controllers :as rfc]
    [reitit.frontend.easy :as rfe]
    [webstack.re-frame-helpers :as rfh :refer [>evt]]
@@ -26,4 +27,4 @@
                     (transition-controllers new-match old-match)))))
 
 (defn init! []
-  (rfe/start! routes on-navigate {:use-fragment false}))
+  (rfe/start! (rf/router routes) on-navigate {:use-fragment false}))
