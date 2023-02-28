@@ -1,24 +1,11 @@
 (ns webstack.router
   "Client-side routing."
   (:require
-   [reitit.frontend :as rf]
    [reitit.frontend.controllers :as rfc]
    [reitit.frontend.easy :as rfe]
-   [webstack.router.state :as router-state]
-   [webstack.pages.home.view :refer [home-page]]
-   [webstack.re-frame-helpers :as rfh :refer [>evt]]))
-
-(def routes
-  (rf/router
-   ["/"
-    ["" {:name ::home
-         :view home-page
-         :controllers [{:start (fn [_] (js/console.log :start "home-page start"))
-                        :stop (fn [_] (js/console.log :start "home-page stop"))}]}]
-    ["other" {:name ::other
-              :view (fn [] [:div "other"])
-              :controllers [{:start (fn [_] (js/console.log :start "other-page start"))
-                             :stop (fn [_] (js/console.log :start "other-page stop"))}]}]]))
+   [webstack.re-frame-helpers :as rfh :refer [>evt]]
+   [webstack.router.routes :refer [routes]]
+   [webstack.router.state :as router-state]))
 
 (defn- update-match [update-fn]
   (>evt [::router-state/update-matched-route update-fn]))
