@@ -33,3 +33,14 @@
          (conj root-path)
          flatten
          (#(assoc-in db % v)))))
+
+(defn make-update-in-context
+  "Return an `update-in`-like function that sets a value at a path starting at
+  the given `root-path` for a target context."
+  [root-path]
+  (fn [db ks f & args]
+    (let [f-w-args (fn [v] (apply f v args))]
+      (->> ks
+           (conj root-path)
+           flatten
+           (#(update-in db % f-w-args))))))

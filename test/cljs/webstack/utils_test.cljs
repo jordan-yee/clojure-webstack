@@ -43,3 +43,26 @@
                                       {:nested-val "nested-test-val"}}}}
              (assoc-in-context mock-app-db :context-val "new-test-val"))
           "constructed function accepts a keyword"))))
+
+(deftest make-update-in-context-test
+  (testing "constructed function can set a value from the defined context root"
+    (let [mock-app-db {:root {:target-context {:context-val 1
+                                               :nested-context {:nested-val 1}}}}
+          update-in-context (utils/make-update-in-context [:root :target-context])]
+      (is (= {:root {:target-context {:context-val 2
+                                      :nested-context {:nested-val 1}}}}
+             (update-in-context mock-app-db [:context-val] inc))
+          "constructed function accepts a vector path")
+      (is (= {:root {:target-context {:context-val 5
+                                      :nested-context {:nested-val 1}}}}
+             (update-in-context mock-app-db [:context-val] + 1 3))
+          "constructed function accepts a variable number of args")
+      (is (= {:root {:target-context {:context-val 1
+                                      :nested-context {:nested-val 2}}}}
+             (update-in-context mock-app-db [:nested-context :nested-val] inc))
+          "constructed function can set nested values")
+      (is (= {:root {:target-context {:context-val 2
+                                      :nested-context
+                                      {:nested-val 1}}}}
+             (update-in-context mock-app-db :context-val inc))
+          "constructed function accepts a keyword"))))
