@@ -1,22 +1,12 @@
 (ns webstack.router
   "Client-side routing."
   (:require
-   [re-frame.core :as re-frame]
    [reitit.frontend :as rf]
-   [reitit.frontend.easy :as rfe]
    [reitit.frontend.controllers :as rfc]
+   [reitit.frontend.easy :as rfe]
+   [webstack.router.state :as router-state]
    [webstack.pages.home.view :refer [home-page]]
    [webstack.re-frame-helpers :as rfh :refer [>evt]]))
-
-(rfh/reg-event-db
- ::update-matched-route
- (fn [db [_ update-fn]]
-   (update db :matched-route update-fn)))
-
-(re-frame/reg-sub
- ::current-page
- (fn [db _]
-   (get-in db [:matched-route :data :view])))
 
 (def routes
   (rf/router
@@ -31,7 +21,7 @@
                              :stop (fn [_] (js/console.log :start "other-page stop"))}]}]]))
 
 (defn- update-match [update-fn]
-  (>evt [::update-matched-route update-fn]))
+  (>evt [::router-state/update-matched-route update-fn]))
 
 (defn- transition-controllers
   "Effectively calls relevant `start` or `stop` controller functions when

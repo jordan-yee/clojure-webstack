@@ -8,3 +8,8 @@
  ::pages
  (fn [db _]
    (get db :pages)))
+
+(rf/reg-sub
+ ::router
+ (fn [db _]
+   (get db :router)))

@@ -2,15 +2,16 @@
   "This namespaces defines the complete schema for re-frame's entire `app-db`,
   which is used to validate changes to the schema after every event."
   (:require
-   [webstack.pages.home.schema :as home-schema]
    [malli.core :as m]
-   [malli.error :as me]))
+   [malli.error :as me]
+   [webstack.pages.home.schema :as home-schema]
+   [webstack.router.schema :as router-schema]))
 
 (defn- make-app-db-schema
   "Build the schema for all of `app-db`."
   []
   [:map {:closed true}
-   [:matched-route :map]
+   [:router router-schema/schema]
    [:pages [:map {:closed true}
             [:home home-schema/schema]]]])
 
