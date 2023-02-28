@@ -7,4 +7,3 @@
 (defn make-initial-values []
   (merge {:router router-state/initial-values}
          {:pages {:home home-state/initial-values}}))
-
