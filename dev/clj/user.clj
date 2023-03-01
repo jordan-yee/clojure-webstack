@@ -9,7 +9,7 @@
    [kaocha.watch :as k-watch]
    [portal.api :as portal]
    [puget.printer :as puget]
-   [snitch.core :refer [*fn *let defmethod* defn*]]))
+   [snitch.core #_"interns macros in clojure.core"]))
 
 (defn test-watch
   "Start the Kaocha test watcher."
