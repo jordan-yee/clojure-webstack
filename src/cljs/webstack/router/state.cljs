@@ -27,3 +27,9 @@
  :<- [::root-subs/router]
  (fn [router _]
    (get-in router [:matched-route :data :view])))
+
+(rf/reg-sub
+ ::current-path
+ :<- [::root-subs/router]
+ (fn [router _]
+   (get-in router [:matched-route :path])))
