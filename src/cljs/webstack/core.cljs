@@ -9,15 +9,22 @@
    [webstack.router.state :as router-state]
    [webstack.router :as router]))
 
+(defn nav-link [label url]
+  (let [current-path (<sub [::router-state/current-path])
+        style {:margin-left "0.25em"}]
+    (if (= current-path url)
+      [:span {:style style} label]
+      [:a {:href url, :style style} label])))
+
+(defn app-nav []
+  [:nav
+   [nav-link "Home" (rfe/href :webstack.pages.home.route/home)]
+   [nav-link "Other" (rfe/href :webstack.router.routes/other)]])
+
 (defn app-container []
   (let [current-page (<sub [::router-state/current-page])]
     [:div {:style {:margin "1em"}}
-     ;; TODO: implement basic html nav
-     [:a {:href (rfe/href :webstack.pages.home.route/home)}
-      "home"]
-     [:span " "]
-     [:a {:href (rfe/href :webstack.router.routes/other)}
-      "other"]
+     [app-nav]
      [current-page]]))
 
 (rfh/reg-event-db
