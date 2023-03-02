@@ -41,17 +41,40 @@ Key Components Include:
   - Reagent                         : ReactJS wrapper
   - Re-frame                        : State management
 
-TODO: Convert into an actual template...
-TODO: Can we do this more simply with a simple sed script?
-To use this project as a template, first clone it, then you can rename the
-project namespace prefix using `clojure.tools.namespace.move/move-ns` from
-a REPL:
-```
-(mv/move-ns 'webstack.core 'my-app.core "src/clj/" ["test" "src"])
-```
-
 > This project is intended for my own use, and reflects my own experience
 > regarding the best way to do things, which remains a work-in-progress.
+
+# Using as a Template
+
+Using my own, select tools (Kakoune, fd, and rg):
+```
+# Clone the project:
+git clone https://github.com/jordan-yee/clojure-webstack.git
+
+# Delete .git so you can re-init as a different, fresh project:
+rm -rf .git
+
+# Open all project files not in .gitignore in Kakoune:
+kak -f "%swebstack<ret>cmyapp" | fd -t f
+kak -f "%sWebstack<ret>cMyapp" | fd -t f
+
+# Identify all "webstack" directories
+fd -t d webstack
+# Rename these manually:
+mv src/clj/webstack src/clj/myapp
+mv src/cljs/webstack src/cljs/myapp
+mv test/clj/webstack test/clj/myapp
+mv test/cljs/webstack test/cljs/myapp
+
+# Search for stray files & file contents that were missed:
+fd webstack
+rg -i webstack
+
+# Re-init a fresh Git repo for your new project
+git init
+git add .
+git commit -m "project init from clojure-webstack"
+```
 
 # First Time Setup
 
