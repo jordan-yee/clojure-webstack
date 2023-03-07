@@ -54,7 +54,7 @@ git clone https://github.com/jordan-yee/clojure-webstack.git
 # Delete .git so you can re-init as a different, fresh project:
 rm -rf .git
 
-# Open all project files not in .gitignore in Kakoune:
+# Rename all occurrences of "webstack", then "Webstack" to your app's name:
 kak -f "%swebstack<ret>cmyapp" | fd -t f
 kak -f "%sWebstack<ret>cMyapp" | fd -t f
 
