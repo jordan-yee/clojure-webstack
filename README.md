@@ -86,6 +86,12 @@ dependency updates by running:
 clojure -T:search/outdated
 ```
 
+After you first clone the project, and possibly after a pull, install the client
+npm deps:
+```
+npm install
+```
+
 # Server
 
 ## Testing
