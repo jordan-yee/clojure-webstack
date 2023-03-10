@@ -33,8 +33,10 @@
    (initial-values/make-initial-values)))
 
 (defn- ^:dev/after-load mount-app []
-  (rd/render [app-container]
-             (js/document.getElementById "root")))
+  (js/console.log "mounting app")
+  (rf/clear-subscription-cache!)
+  (router/init!)
+  (rd/render [app-container] (js/document.getElementById "root")))
 
 (defn- fake-load
   "Wait for 1 second then execute `(f)` to simulate a loading delay."
@@ -46,5 +48,4 @@
   []
   (println "Client started...")
   (rf/dispatch-sync [::set-initial-data])
-  (router/init!)
   (fake-load mount-app))
